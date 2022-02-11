@@ -35,6 +35,14 @@ namespace UltimateMovieNight.Controllers
         public ActionResult<List<Movie>> FindAll() =>
             _movieBusiness.FindAll();
 
+        [HttpGet("raffle")]
+        [ProducesResponseType((200), Type = typeof(Movie))]
+        [ProducesResponseType((204))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
+        public ActionResult<Movie> FindRandom() =>
+            _movieBusiness.FindRandom();
+
         [HttpGet("{id:length(24)}", Name = "FindMovieById")]
         [ProducesResponseType((200), Type = typeof(Movie))]
         [ProducesResponseType((204))]

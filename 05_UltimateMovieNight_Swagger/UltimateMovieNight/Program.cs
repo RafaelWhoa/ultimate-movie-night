@@ -12,6 +12,8 @@ using UltimateMovieNight.Repository.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 // Add services to the container.
 
 builder.Services.Configure<MovieNightDatabaseSettings>(
@@ -20,6 +22,15 @@ builder.Services.AddSingleton<IMovieNightDatabaseSettings>(sp =>
     sp.GetRequiredService<IOptions<MovieNightDatabaseSettings>>().Value);
 
 builder.Services.AddApiVersioning();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:3000");
+        });
+});
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -82,6 +93,8 @@ option.AddRedirect("ˆ$", "swagger");
 app.UseRewriter(option);
 
 app.UseAuthorization();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.MapControllers();
 

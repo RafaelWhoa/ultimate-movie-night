@@ -20,6 +20,9 @@ namespace UltimateMovieNight.Business.Implementation
         public Movie FindById(string id) =>
             _repository.FindById(id);
 
+        public Movie FindRandom() =>
+            _repository.FindRandom();
+
         public Movie Create(Movie movieIn) =>
             _repository.Create(movieIn);
 

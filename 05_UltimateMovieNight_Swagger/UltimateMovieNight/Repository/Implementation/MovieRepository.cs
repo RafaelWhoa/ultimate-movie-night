@@ -1,5 +1,6 @@
 ﻿using System;
 using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using UltimateMovieNight.Model;
 
 namespace UltimateMovieNight.Repository.Implementation
@@ -21,6 +22,9 @@ namespace UltimateMovieNight.Repository.Implementation
 
         public Movie FindById(string id) =>
             _movies.Find(movie => movie.Id == id).FirstOrDefault();
+
+        public Movie FindRandom() =>
+            _movies.AsQueryable().Sample(1).First();
 
         public Movie Create(Movie movieIn)
         {

@@ -7,6 +7,7 @@ namespace UltimateMovieNight.Repository
     {
         List<Movie> FindAll();
         Movie FindById(string id);
+        Movie FindRandom();
         Movie Create(Movie movieIn);
         void Update(string id, Movie movieIn);
         void DeleteById(string id);
