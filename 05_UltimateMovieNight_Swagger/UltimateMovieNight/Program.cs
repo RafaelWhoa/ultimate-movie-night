@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Rewrite;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Mongo.Migration.Startup;
@@ -68,9 +69,13 @@ builder.Services.AddMigration(new MongoMigrationSettings
 
 //Dependency Injection
 
+builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 builder.Services.AddScoped<IMovieBusiness, MovieBusiness>();
 
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
+
+builder.Services.AddScoped<IFileBusiness, FileBusiness>();
 
 
 var app = builder.Build();

@@ -22,6 +22,9 @@
     <None Remove="DB\" />
     <None Remove="DB\Migrations\" />
     <None Remove="Swashbuckle.AspNetCore" />
+    <None Remove="UploadDir\" />
+    <None Remove="Data\" />
+    <None Remove="Data\VO\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -31,6 +34,9 @@
     <Folder Include="Business\" />
     <Folder Include="DB\" />
     <Folder Include="DB\Migrations\" />
+    <Folder Include="UploadDir\" />
+    <Folder Include="Data\" />
+    <Folder Include="Data\VO\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.13.2" />
