@@ -25,6 +25,7 @@ namespace UltimateMovieNight.Business.Implementation
             FileDetailVO fileDetail = new FileDetailVO();
 
             var fileType = Path.GetExtension(file.FileName);
+            #nullable disable
             var baseURL = _context.HttpContext.Request.Host;
 
             if(fileType .ToLower() == ".png" || fileType.ToLower() == ".jpg" ||

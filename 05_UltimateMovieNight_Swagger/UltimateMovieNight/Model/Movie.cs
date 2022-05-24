@@ -21,6 +21,8 @@ namespace UltimateMovieNight.Model
 
         public string AvailableAt { get; set; }
 
+        public string Banner { get; set; }
+
         public DateTime AddedAt { get; set; }
 
         public DateTime UpdatedAt { get; set; }

@@ -25,6 +25,7 @@
     <None Remove="UploadDir\" />
     <None Remove="Data\" />
     <None Remove="Data\VO\" />
+    <None Remove="Contracts\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -37,8 +38,10 @@
     <Folder Include="UploadDir\" />
     <Folder Include="Data\" />
     <Folder Include="Data\VO\" />
+    <Folder Include="Contracts\" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.13.2" />
     <PackageReference Include="MongoDB.Bson" Version="2.13.2" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />

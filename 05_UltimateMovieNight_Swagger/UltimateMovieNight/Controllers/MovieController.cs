@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using MongoDB.Bson;
+﻿using Microsoft.AspNetCore.Mvc;
 using UltimateMovieNight.Business;
+using UltimateMovieNight.Contracts;
 using UltimateMovieNight.Model;
-using UltimateMovieNight.Repository;
-using UltimateMovieNight.Repository.Implementation;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -43,7 +37,24 @@ namespace UltimateMovieNight.Controllers
         public ActionResult<Movie> FindRandom() =>
             _movieBusiness.FindRandom();
 
-        [HttpGet("{id:length(24)}", Name = "FindMovieById")]
+        [HttpPost("rafflewithfilter")]
+        [ProducesResponseType((200), Type = typeof(Movie))]
+        [ProducesResponseType((204))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
+        public ActionResult<Movie> FindRandomWithFilter(MovieQuery query)
+        {
+            var movie = _movieBusiness.FindRandomWithFilter(query);
+
+            if (movie == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(movie);
+        }
+
+        [HttpPost("{id:length(24)}", Name = "FindMovieById")]
         [ProducesResponseType((200), Type = typeof(Movie))]
         [ProducesResponseType((204))]
         [ProducesResponseType((400))]

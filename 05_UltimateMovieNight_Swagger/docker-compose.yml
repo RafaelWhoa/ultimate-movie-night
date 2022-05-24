@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  ultimatemovienight:
+    image: ${DOCKER_REGISTRY-}ultimatemovienight
+    build:
+        context: .
+        dockerfile: UltimateMovieNight/Dockerfile

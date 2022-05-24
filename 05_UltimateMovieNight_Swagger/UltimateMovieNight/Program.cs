@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Rewrite;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
@@ -29,7 +30,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
         builder =>
         {
-            builder.WithOrigins("http://localhost:3000");
+            builder.WithOrigins("http://localhost:3001", "http://localhost:3000");
         });
 });
 
@@ -76,7 +77,6 @@ builder.Services.AddScoped<IMovieBusiness, MovieBusiness>();
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
 
 builder.Services.AddScoped<IFileBusiness, FileBusiness>();
-
 
 var app = builder.Build();
 
